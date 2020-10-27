@@ -145,8 +145,8 @@ frameSize = (600, 400)
 areaFrame = frameSize[0] * frameSize[1]
 
 # minimum size 0.01%/maximum size 0.1%
-MinCountourArea = areaFrame * 0.01
-MaxCountourArea = areaFrame * 0.1
+MinCountourArea = areaFrame * 0.05
+MaxCountourArea = areaFrame * 0.2
 
 #line's position
 OffsetY = int(frameSize[1] * 0.25)
@@ -255,11 +255,11 @@ while True:
 
         if abs(firstCenter[1]-CoorExitLine1[1]) > margin and abs(ObjectCentroid[1]-CoorExitLine1[1]) > margin :
             if not CheckLineCrossing(firstCenter, CoorExitLine1, CoorExitLine2) and CheckLineCrossing(ObjectCentroid, CoorExitLine1, CoorExitLine2) :
-                countPeople -= 1
+                countPeople += 1
                 firstTrack[indexTrack] = rec
                 microgear.publish("/gearname/Count",countPeople,{'retain':True})
             elif not CheckLineCrossing(ObjectCentroid, CoorExitLine1, CoorExitLine2) and CheckLineCrossing(firstCenter, CoorExitLine1, CoorExitLine2) :
-                countPeople += 1
+                countPeople -= 1
                 firstTrack[indexTrack] = rec
                 microgear.publish("/gearname/Count",countPeople,{'retain':True})
     for i in range(len(statusMove)):
@@ -275,7 +275,7 @@ while True:
     for i in range(len(statusMove)) :
         statusMove[i] -= 1
     idle_time += 1
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(60) & 0xFF == ord('q'):
         break
     #cv2.waitKey(0)
 

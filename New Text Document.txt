@@ -1,0 +1,9 @@
+#How to run
+
+via video file
+
+python Peoplecount.py -v test.mp4
+
+via camera
+
+python Peoplecount.py
