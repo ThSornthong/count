@@ -146,7 +146,7 @@ areaFrame = frameSize[0] * frameSize[1]
 
 # minimum size 0.01%/maximum size 0.1%
 MinCountourArea = areaFrame * 0.05
-MaxCountourArea = areaFrame * 0.2
+MaxCountourArea = areaFrame * 0.25
 
 #line's position
 OffsetY = int(frameSize[1] * 0.25)
